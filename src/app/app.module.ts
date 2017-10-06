@@ -3,7 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
+import { AuthModule } from './auth/auth.module';
+import { LandingModule } from './landing/landing.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
 
+export const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
   declarations: [
@@ -11,10 +17,15 @@ import { LayoutModule } from './layout/layout.module';
   ],
   imports: [
     BrowserModule,
-    LayoutModule
+    LayoutModule,
+    AuthModule,
+    LandingModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }
 
