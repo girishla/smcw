@@ -1,0 +1,87 @@
+
+  .sc-icon, .sc-text {
+    display: block;
+    float: left; }
+  
+  .sc-icon {
+    margin: 0 -.4em 0 0;
+    padding: 0.6em .8em .5em;
+    border-right: rgba(255, 255, 255, 0.1) 0.1em solid;
+    box-shadow: inset rgba(0, 0, 0, 0.1) -0.1em 0px 0px; }
+  
+  .sc-text {
+    padding: .95em 1em .85em 1em;
+    font-size: 1.15em;
+    text-align: center; }
+  
+  svg {
+    width: 1.8em;
+    height: 1.8em;
+    fill: #fff; }
+  
+/* Tested only in latest version of Chrome, Firefox and IE as of July 2014. */
+
+.flex-container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  
+  .flex-container li {
+    list-style: none;
+    flex-grow:1;
+    cursor: pointer;
+  }
+  .twitter {
+    background-color: #55acee;
+    color: white;
+    order: 5;
+  }
+  .twitter:hover {
+    background-color: #6fb9f1;
+  }
+  .facebook {
+    background-color: #3b5998;
+    color: white;
+    order: 3;
+  }
+  .facebook:hover {
+    background-color: #4365ad;
+  }
+  .linkedin {
+    background-color: #0976b4;
+    order: 1;
+  }
+  .linkedin:hover {
+    background-color: #0a89d1;
+  }
+  .codepen {
+    background-color: #181818;
+    order: 2;
+  }
+  .codepen:hover {
+    background-color: #262626;
+  }
+  .dribbble {
+    background-color: #ea4c89;
+    order: 4;
+  }
+  .dribbble:hover {
+    background-color: #ed6499;
+  }
+  .twitter, 
+  .facebook,
+  .linkedin,
+  .codepen,
+  .dribbble,
+  .twitter:hover, 
+  .facebook:hover, 
+  .linkedin:hover,
+  .codepen:hover,
+  .dribbble:hover {
+    transition: background-color .3s ease;
+  }
+

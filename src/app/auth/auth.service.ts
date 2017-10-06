@@ -16,7 +16,9 @@ export class AuthService {
 
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth
+      console.log(auth)
     });
+    this.afAuth.auth.getRedirectResult().catch(error => console.log(error))
   }
 
   // Returns true if user is logged in
@@ -78,7 +80,8 @@ export class AuthService {
   }
 
   private socialSignIn(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
+    
+    return this.afAuth.auth.signInWithRedirect(provider)
       .then((credential) => {
         this.authState = credential.user
         this.updateUserData()
