@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { UserLoginDialogComponent } from '../../auth/user-login-dialog/user-login-dialog.component';
 
 
 @Component({
@@ -41,7 +43,25 @@ export class TopBarComponent implements OnInit, AfterViewInit {
     this.router.navigate(['login']);
   }
 
-  constructor(private router: Router) {}
+
+  loginDialog(): void {
+
+    this.toggleElement.classList.toggle('is-active');
+    this.menuElement.classList.toggle('is-active');
+
+    let dialogRef = this.dialog.open(UserLoginDialogComponent, {
+      width: '520px',
+      panelClass: 'login-dialog',
+      data: {  }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
+
+  constructor(private router: Router,public dialog: MatDialog) {}
 
   ngOnInit() {
   }
