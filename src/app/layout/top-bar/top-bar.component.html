@@ -24,15 +24,24 @@
       <a class="nav-item is-tab">
         Help
       </a>
-      <span class="nav-item">
+      <span *ngIf="!auth.currentUser;" class="nav-item">
         <a class="button" (click)="loginDialog()">
-          Log in
+          signin/signup
         </a>
-        <a class="button is-info">
-          Sign up
-        </a>
+      </span>
+
+      <span *ngIf="auth.currentUser;" class="nav-item">
+          <a class="button" (click)="auth.signOut()">
+            Logout
+          </a>
+        </span>
+      <span *ngIf="auth.currentUser;" class="nav-item is-hidden-mobile">
+        <figure class="image is-32x32">
+          <img [src]="auth.currentUser.photoURL || '../assets/dummyavatar.png'">
+        </figure>
       </span>
     </div>
   </div>
 </nav>
 </div>
+

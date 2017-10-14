@@ -3,23 +3,48 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
 export class AuthService {
 
   authState: any = null;
+  busy: Subscription;
+  loading:Boolean;
 
   constructor(private afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
     private router: Router) {
 
-    this.afAuth.authState.subscribe((auth) => {
-      this.authState = auth
-      console.log(auth)
-    });
-    this.afAuth.auth.getRedirectResult().catch(error => console.log(error))
+      this.afAuth.authState.subscribe((auth) => {
+        this.authState = auth
+        console.log("Auth state changed", auth);
+  
+  
+      });
+  
+
+
+    this.busy=this.subscribeToAuthState();
+
+    this.afAuth.auth.getRedirectResult().then(out => console.log(out)).
+      catch(error => console.log(error));
+
   }
+
+  private subscribeToAuthState() {
+    return this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth
+      console.log("Auth state changed", auth);
+      this.busy.unsubscribe();
+
+    });
+
+
+  }
+
 
   // Returns true if user is logged in
   get authenticated(): boolean {
@@ -80,7 +105,7 @@ export class AuthService {
   }
 
   private socialSignIn(provider) {
-    
+
     return this.afAuth.auth.signInWithRedirect(provider)
       .then((credential) => {
         this.authState = credential.user

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angula
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { UserLoginDialogComponent } from '../../auth/user-login-dialog/user-login-dialog.component';
+import { AuthService } from '../../auth/auth.service';
 
 
 @Component({
@@ -60,7 +61,7 @@ export class TopBarComponent implements OnInit, AfterViewInit {
     });
   }
 
-  constructor(private router: Router,public dialog: MatDialog) {}
+  constructor(private router: Router,public dialog: MatDialog,public auth: AuthService) {}
 
   ngOnInit() {
   }

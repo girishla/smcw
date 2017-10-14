@@ -8,8 +8,10 @@ import { LandingModule } from './landing/landing.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import {BusyModule} from 'angular2-busy';
 
 export const firebaseConfig = environment.firebaseConfig;
+
 
 @NgModule({
   declarations: [
@@ -18,11 +20,12 @@ export const firebaseConfig = environment.firebaseConfig;
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    BusyModule,
     LayoutModule,
     AuthModule,
     LandingModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent],

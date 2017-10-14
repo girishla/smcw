@@ -1,8 +1,10 @@
-<smc-top-bar></smc-top-bar>
+<div [ngBusy]="auth.busy">
+    <smc-top-bar></smc-top-bar>
 
-<section class="section">
-    <div class="container content">
-        <router-outlet></router-outlet>
-      
-    </div>
-</section>
+    <section class="section">
+        <div class="container content">
+            <router-outlet></router-outlet>
+
+        </div>
+    </section>
+</div>

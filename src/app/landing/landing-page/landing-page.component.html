@@ -1,1 +1,2 @@
-<p class="has-text-centered">Welcome to SMC.</p>
+<p *ngIf="auth.currentUser" class="has-text-centered"><b>{{ auth.currentUser.displayName}}</b>, welcome to seemychain.</p>
+<p *ngIf="!auth.currentUser" class="has-text-centered">Moving house? Signup to seemychain to make your move easier.</p>
